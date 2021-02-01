@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- https://tailwindcss.com/docs/installation -->
+
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+  .checked {
+    color: orange;
+  }
+</style>
+
+<body>
+  <div id="nav" class="flex space-y-2 space-x-4 items-center justify-between shadow-md pb-1.5">
+    <img class="h-12 m-0.5 pt-2 mx-7" src="./images/logo.png">
+    <h2 class="font-semibold text-gray-500 text-xl">
+      <a href="#">
+        Udemy
+      </a>
+    </h2>
+    <h3 class="font-light text-md text-gray-500">
+      <a href="#">Categories</a>
+    </h3>
+    <div class="border border-gray-300 rounded-full flex  mx-auto border-gray-500 w-7/12 ">
+      <div class="pl-3 pt-2 pr-2 opacity-40">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <path
+            d="M9.145 18.29c-5.042 0-9.145-4.102-9.145-9.145s4.103-9.145 9.145-9.145 9.145 4.103 9.145 9.145-4.102 9.145-9.145 9.145zm0-15.167c-3.321 0-6.022 2.702-6.022 6.022s2.702 6.022 6.022 6.022 6.023-2.702 6.023-6.022-2.702-6.022-6.023-6.022zm9.263 12.443c-.817 1.176-1.852 2.188-3.046 2.981l5.452 5.453 3.014-3.013-5.42-5.421z" />
+        </svg>
+      </div>
+      <form action="#" method="GET" class=""></form>
+      <label for="search"></label>
+      <input class="m-1 focus:outline-none w-11/12 font-light text-gray-900" id="search" name="keyword"
+        placeholder="Search for anything">
+      </form>
+    </div>
+    <a href="#">
+      <h3 class="text-gray-500">Teach on Udemy</h3>
+    </a>
+    <div>
+      <svg class="opaticy-30" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path
+          d="M24 3l-.743 2h-1.929l-3.474 12h-13.239l-4.615-11h16.812l-.564 2h-13.24l2.937 7h10.428l3.432-12h4.195zm-15.5 15c-.828 0-1.5.672-1.5 1.5 0 .829.672 1.5 1.5 1.5s1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm6.9-7-1.9 7c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5z" />
+      </svg>
+    </div>
+    <div class="border border-green-700 border-4 opacity-70  px-2 py-1.5 rounded-lg
+    hover:border-0 hover:bg-green-700 hover:text-white inline-flex">
+      <a href="#">Log in</a>
+    </div>
+    <div class="border bg-green-700 border-4 text-white opacity-70 px-2 py-1.5 rounded-lg
+    hover:border-0 hover:bg-green-900 ">
+      <a href="#">Sign up</a>
+    </div>
+  </div>
+  <!-- Nav bar -->
+  <div class="static">
+    <img src="./images/bg01.jpg" class="w-full">
+    <div
+      class="shadow-lg w-4/12 max-w-md absolute bg-white top-24 left-7 py-5 px-6 space-y-3 fixed invisible lg:visible">
+      <h2 class="text-4xl font-semibold text-gray-600">Learn on your shedule</h2>
+      <p class="font-light text-md">Study any topic, anytime. Explore thousands of courses starting at ฿399 each.</p>
+      <form action="#" method="GET" class="border border-gray-400 flex w-11/12 p-2 mt-2 text-gray-500">
+        <input class="w-11/12 focus:outline-none placeholder-opacity-25	" placeholder=" what do you want to learn ?">
+        <svg class="pt-1 opacity-40" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+          <path
+            d="M9.145 18.29c-5.042 0-9.145-4.102-9.145-9.145s4.103-9.145 9.145-9.145 9.145 4.103 9.145 9.145-4.102 9.145-9.145 9.145zm0-15.167c-3.321 0-6.022 2.702-6.022 6.022s2.702 6.022 6.022 6.022 6.023-2.702 6.023-6.022-2.702-6.022-6.023-6.022zm9.263 12.443c-.817 1.176-1.852 2.188-3.046 2.981l5.452 5.453 3.014-3.013-5.42-5.421z" />
+        </svg>
+      </form>
+    </div>
+  </div>
+
+  <!-- banner -->
+  <div class="space-x-8 border border-gray-200 flex items-center justify-center invisible lg:visible">
+    <div class="flex-grow items-center p-8 ">
+      <svg class="rounded-full h-10 w-10 bg-blue-100 mx-3 p-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+      </svg>
+      <div>
+        <h3 class="font-semibold">130,000 online courses</h3>
+        <p class="font-light text-gray-500">Enjoy a variety of fresh topics</p>
+      </div>
+    </div>
+
+    <div class="flex-grow items-center p-4">
+      <svg class="rounded-full h-10 w-10 bg-blue-100 mx-3 p-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M11.383 15.941l-3.758 8.059-.967-2.658-2.658.968 3.517-7.541c.678.216 1.137.162 1.849.162.744.513 1.072.844 2.017 1.01zm3.252-1.009c-.738.506-1.049.831-1.994 1.004l3.759 8.064.967-2.658 2.633.968-3.495-7.549c-.686.222-1.146.171-1.87.171zm-2.635-11.932c-2.205 0-4 1.795-4 4s1.795 4 4 4c2.206 0 4-1.794 4-4s-1.794-4-4-4zm6.926 5.278c.051.146.074.296.074.445 0 .449-.222.883-.615 1.156-1.256.87-1.09.651-1.562 2.067-.198.591-.77.99-1.414.99h-.004c-1.549-.005-1.279-.088-2.528.789-.262.183-.569.275-.877.275s-.615-.092-.876-.275c-1.249-.878-.98-.794-2.528-.789h-.004c-.645 0-1.216-.399-1.413-.99-.473-1.417-.311-1.198-1.562-2.067-.395-.274-.617-.708-.617-1.157 0-.148.024-.298.074-.444.483-1.411.484-1.139 0-2.555-.05-.147-.074-.297-.074-.445 0-.45.222-.883.616-1.157 1.251-.868 1.089-.648 1.562-2.067.197-.591.769-.99 1.413-.99h.004c1.545.005 1.271.095 2.528-.79.262-.182.569-.274.877-.274s.615.091.876.274c1.249.878.98.795 2.528.79h.004c.645 0 1.216.399 1.414.99.473 1.416.307 1.197 1.562 2.067.394.274.616.707.616 1.156 0 .148-.023.299-.074.445-.483 1.411-.485 1.139 0 2.556zm-1.926-1.278c0-2.761-2.238-5-5-5-2.761 0-5 2.239-5 5s2.239 5 5 5c2.762 0 5-2.238 5-5z" />
+      </svg>
+      <div>
+        <h3 class="font-semibold">Expert instruction</h3>
+        <p class="font-light text-gray-500">Find the rigth instructor for you</p>
+      </div>
+    </div>
+
+    <div class="flex-grow items-center p-4 ">
+      <svg class="rounded-full h-10 w-10 bg-blue-100 mx-3 p-1.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M18.572 6c-6.018 0-8.414 10-13.143 10-2.114 0-3.479-1.578-3.479-4s1.366-4 3.479-4c1.666 0 2.862 1.069 4.017 2.395l1.244-1.561c-1.499-1.533-3.05-2.834-5.261-2.834-3.197 0-5.429 2.455-5.429 6s2.232 6 5.429 6c6.003 0 8.407-10 13.143-10 2.113 0 3.479 1.578 3.479 4s-1.365 4-3.479 4c-1.664 0-2.86-1.068-4.015-2.392l-1.244 1.561c1.499 1.531 3.05 2.831 5.259 2.831 3.197 0 5.428-2.455 5.428-6s-2.231-6-5.428-6z" />
+      </svg>
+      <div>
+        <h3 class="font-semibold">Lifetime access</h3>
+        <p class="font-light text-gray-500">Learn on your schedule</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ml-7 space-y-1">
+    <h2 class="mt-20 text-2xl font-semibold">The world's largest selection of courses</h2>
+    <p class="text-md text-gray-400">Choose from 130,000 online video courses with new additions published every month
+    </p>
+  </div>
+
+  <div class="ml-7 border-b-2 border-gray-200 mt-10">
+    <div class="ml-2 flex items-center space-x-6 text-gray-500 ">
+      <button class="pb-5 border-b-2 border-black focus:outline-none" role="button" aria-selected="true">Python</button>
+      <button class="pb-5 border-b-2 focus:border-black focus:outline-none" role="button"
+        aria-selected="false">Excel</button>
+      <button class="pb-5 border-b-2 focus:border-black focus:outline-none" role="button" aria-selected="false">Web
+        Development</button>
+      <button class="pb-5 border-b-2 focus:border-black focus:outline-none" role="button"
+        aria-selected="false">JavaScript</button>
+      <button class="pb-5 border-b-2 focus:border-black focus:outline-none" role="button" aria-selected="false">Data
+        Science</button>
+      <button class="pb-5 border-b-2 focus:border-black focus:outline-none" role="button" aria-selected="false">AWS
+        Certificate</button>
+      <button class="pb-5 border-b-2 focus:border-black focus:outline-none" role="button"
+        aria-selected="false">Drawing</button>
+    </div>
+  </div>
+
+  <div class="ml-7 mt-6 bg-yellow-50">
+    <div class="p-9 mx-auto flex items-center">
+      <div class="space-y-3 w-7/12 ">
+        <h2 class="text-md font-semibold">Expand your career opportunities with Python </h2>
+        <p class="font-light ">Whether you work in machine learning or finance, or are pursuing a career in web
+          development or data science, Python is one of the most important skills you can learn. Python's simple syntax
+          is especially suited for desktop, web, and business applications ...
+        </p>
+        <a href="#" class="text-blue-400">Explore Python ></a>
+      </div>
+      <img src="./images/p1.jpg" class="absolute bottom- right-12 rounded-full w-48 h-48">
+    </div>
+  </div>
+
+  <!-- course -->
+  <div class="flex items-center justify-center">
+
+    <div class="mt-6 ml-7 mb-10 space-y-4 w-3/12 space-x-5 ">
+      <div class="cursor-wait">
+        <a href="#">
+          <img src="./images/tech1.jpg" class="border p-1 border-gray-100 ">
+          <h2 class="capitalize">2021 Complete Python Bootcamp From Zero to Hero in Python</h2>
+          <div class="flex items-center">
+            <h3 class="text-sm mr-1.5 text-red-700 font-semibold">4.0</h3>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <h3 class="ml-1.5 text-sm text-gray-400">(300,000)</h3>
+          </div>
+          <p class="text-sm font-thin text-gray-400"> Jose Portilla</p>
+          <div class="flex space-x-3 items-center">
+            <h3 class="text-md">฿399</h3>
+            <h3 class="text-sm text-gray-300">฿3999</h3>
+          </div>
+          <h3 class="mt-2.5 rounded-lg bg-yellow-200 pl-2 w-4/12">Bestseller</h3>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-6 ml-7 mb-10 space-y-4 w-3/12 space-x-5 ">
+      <div class="cursor-wait">
+        <a href="#">
+          <img src="./images/tech2.jpg" class="border p-1 border-gray-100 ">
+          <h2 class="capitalize">2021 Complete Python Bootcamp From Zero to Hero in Python</h2>
+          <div class="flex items-center">
+            <h3 class="text-sm mr-1.5 text-red-700 font-semibold">4.0</h3>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <h3 class="ml-1.5 text-sm text-gray-400">(300,000)</h3>
+          </div>
+          <p class="text-sm font-thin text-gray-400"> Jose Portilla</p>
+          <div class="flex space-x-3 items-center">
+            <h3 class="text-md">฿399</h3>
+            <h3 class="text-sm text-gray-300">฿3999</h3>
+          </div>
+          <h3 class="mt-2.5 rounded-lg bg-yellow-200 pl-2 w-4/12">Bestseller</h3>
+        </a>
+      </div>
+    </div>
+    <div class="mt-6 ml-7 mb-10 space-y-4 w-3/12 space-x-5">
+      <div class="cursor-wait">
+        <a href="#">
+          <img src="./images/tech3.jpg" class="border p-1 border-gray-100 ">
+          <h2 class="capitalize">2021 Complete Python Bootcamp From Zero to Hero in Python</h2>
+          <div class="flex items-center">
+            <h3 class="text-sm mr-1.5 text-red-700 font-semibold">4.0</h3>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <h3 class="ml-1.5 text-sm text-gray-400">(300,000)</h3>
+          </div>
+          <p class="text-sm font-thin text-gray-400"> Jose Portilla</p>
+          <div class="flex space-x-3 items-center">
+            <h3 class="text-md">฿399</h3>
+            <h3 class="text-sm text-gray-300">฿3999</h3>
+          </div>
+          <h3 class="mt-2.5 rounded-lg bg-yellow-200 pl-2 w-4/12">Bestseller</h3>
+        </a>
+      </div>
+    </div>
+    <div class="mt-6 ml-7 mb-10 space-y-4 w-3/12 space-x-5 ">
+      <div class="cursor-wait">
+        <a href="#">
+          <img src="./images/tech4.jpg" class="border p-1 border-gray-100 ">
+          <h2 class="capitalize">2021 Complete Python Bootcamp From Zero to Hero in Python</h2>
+          <div class="flex items-center">
+            <h3 class="text-sm mr-1.5 text-red-700 font-semibold">4.0</h3>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <h3 class="ml-1.5 text-sm text-gray-400">(300,000)</h3>
+          </div>
+          <p class="text-sm font-thin text-gray-400"> Jose Portilla</p>
+          <div class="flex space-x-3 items-center">
+            <h3 class="text-md">฿399</h3>
+            <h3 class="text-sm text-gray-300">฿3999</h3>
+          </div>
+          <h3 class="mt-2.5 rounded-lg bg-yellow-200 pl-2 w-4/12">Bestseller</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-purple-900 text-white text-center py-7">
+    <h2 class="font-semibold text-3xl">Get personal learning recommendations</h2>
+    <p class="mb-5 mt-1">Answer a few questions for your top picks</p>
+    <a class="border border-white p-3 mt-2 rounded-sm" href="#">Get started</a>
+  </div>
+
+  <!-- Catgegories -->
+
+  <div class="mt-12 mx-7">
+    <h2 class="font-semibold text-gray-600 text-2xl mb-3">Top categories</h2>
+    <div class="flex-col space-y-4">
+      <!-- row1 -->
+      <div class="flex space-x-3 justify-center">
+
+        <div class="border border-gray-200">
+          <img src="./images/Cat1.jpg" class="object-cover h-80 w-full">
+          <h2 class="text-xl ml-2 pt-2 pb-8">Design</h2>
+        </div>
+
+        <div class="border border-gray-200">
+          <img src="./images/Cat2.jpg" class="object-cover h-80 w-full">
+          <h2 class="text-xl ml-2 pt-2 pb-8">Development</h2>
+        </div>
+
+        <div class="border border-gray-200">
+          <img src="./images/Cat3.jpg" class="object-cover h-80 w-full">
+          <h2 class="text-xl ml-2 pt-2 pb-8">Marketing</h2>
+        </div>
+
+        <div class="border border-gray-200">
+          <img src="./images/Cat4.jpg" class="object-cover h-80 w-full">
+          <h2 class="text-xl ml-2 pt-2 pb-8">IT and Software</h2>
+        </div>
+
+      </div>
+      <!-- row2 -->
+      <div class="flex space-x-5 justify-center ">
+
+        <div class="border border-gray-200">
+          <img src="./images/Cat5.jpg" class="object-cover h-80 w-full">
+          <h2 class="text-xl ml-2 pt-2 pb-8 ">Personal Development</h2>
+        </div>
+
+        <div class="border border-gray-200">
+          <img src="./images/Cat6.jpg" class="object-cover h-80 w-full">
+          <h2 class="text-xl ml-2 pt-2 pb-8">Business</h2>
+        </div>
+
+        <div class="border border-gray-200">
+          <img src="./images/Cat7.jpg" class="object-cover h-80 w-full">
+          <h2 class="text-xl ml-2 pt-2 pb-8">Photography</h2>
+        </div>
+
+        <div class="border border-gray-200">
+          <img src="./images/Cat8.jpg" class="object-cover h-80 w-full">
+          <h2 class="text-xl ml-2 pt-2 pb-8">Music</h2>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mt-12 ml-7">
+    <h2 class="text-2xl">Featured topics by category</h2>
+    <div class="flex space-x-36 justify-start">
+      <!-- col1 -->
+      <div class="flex-col my-5">
+
+        <h3 class="">Development</h3>
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">Python</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">Web Development</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">Machine Learning</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+        <div class="mt-8 space-y-1">
+          <a class="border bg-green-600 text-white p-3 rounded-xl" href="#">Explore More</a>
+        </div>
+
+      </div>
+      <!-- col2 -->
+      <div class="flex-col my-5">
+
+        <h3 class="">Business</h3>
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">Financial Analysis</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">SQL</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">PMP</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+      </div>
+      <!-- col3 -->
+      <div class="flex-col my-5">
+
+        <h3 class="">IT and Software</h3>
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">AWS Certification</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">Ethical Hacking</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">Cyber Security</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+      </div>
+
+      <!-- col4 -->
+      <div class="flex-col my-5">
+
+        <h3 class="">Design</h3>
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">Photoshop</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">Graphic Design</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+        <div class="mt-5 space-y-1">
+          <h3><a class="text-blue-600 text-md" href="#">Drawing</a></h3>
+          <p class="text-gray-400 text-sm">24,024,503 students</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- instructor -->
+  <div class="my-5 border-b-1 border-gray-500 flex h-96 relative">
+    <img src="./images/instuctor2.jpg" class="absolute object-cover h-96 w-96 shadow-md left-12">
+    <div class="my-10 bg-yellow-50 p-2 h-72 w-full">
+      <div class="my-3 space-y-4 w-5/12 p-2 absolute right-12 top-20">
+        <h1 class="text-3xl font-semibold">Become an instructor</h1>
+        <h3 class="font-light">Top instructors from around the world teach millions of students on Udemy. We provide the
+          tools and skills
+          to teach what you love.
+        </h3>
+        <div>
+          <a class="text-white p-2  rounded-md bg-green-500" href="#">Start teaching today</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sponsor -->
+  <div class="border-t border-b border-gray-200 py-5">
+    <h2 class="text-xl font-semibold text-center">Trusted by companies of all sizes</h2>
+    <div class="flex justify-center my-5 space-x-4">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+        <path
+          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3 7h-1.924c-.615 0-1.076.252-1.076.889v1.111h3l-.238 3h-2.762v8h-3v-8h-2v-3h2v-1.923c0-2.022 1.064-3.077 3.461-3.077h2.539v3z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+        <path
+          d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+        <path
+          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+        <path
+          d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+        <path
+          d="M22 17.607c-.786 2.28-3.139 6.317-5.563 6.361-1.608.031-2.125-.953-3.963-.953-1.837 0-2.412.923-3.932.983-2.572.099-6.542-5.827-6.542-10.995 0-4.747 3.308-7.1 6.198-7.143 1.55-.028 3.014 1.045 3.959 1.045.949 0 2.727-1.29 4.596-1.101.782.033 2.979.315 4.389 2.377-3.741 2.442-3.158 7.549.858 9.426zm-5.222-17.607c-2.826.114-5.132 3.079-4.81 5.531 2.612.203 5.118-2.725 4.81-5.531z" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Udemy for Business -->
+  <div class="my-5 border-b-1 border-gray-500 flex h-96 relative">
+    <img src="./images/Bu.jpg" class="absolute object-cover h-96 w-96 shadow-md right-12">
+    <div class="my-10 bg-blue-500 p-2 h-72 w-full">
+      <div class="my-3 space-y-3 w-5/12 p-2 absolute left-12 top-20">
+        <h1 class="text-white text-3xl font-semibold">Udemy for Business
+        </h1>
+        <h3 class="text-white font-light">Get unlimited access to 5,000+ of Udemy’s top courses for your team.
+        </h3>
+        <div class="mt-3">
+          <a class="text-white p-2 rounded-md bg-green-500" href="#">Get Udemy for Business</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education -->
+  <div class="my-10 border border-gray-200 flex h-96 relative">
+    <!-- <video width="500" height="360" src="https://youtu.be/QFIhEmOd6No" type class="absolute object-cover h-96 w-96 shadow-md left-12"> </video> -->
+    <iframe class="absolute object-cover shadow-md left-7 top-8" width="500" height="300" src="https://www.youtube.com/embed/QFIhEmOd6No" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    <div class="my-10 bg-yellow-50 p-2 h-72 w-full">
+      <div class="my-3 space-y-4 w-5/12 p-2 absolute right-12 top-20">
+        <h1 class="text-3xl font-semibold">Transform your life through education</h1>
+        <h3 class="font-light">Mohamad Alaloush launched a new career in software development by taking courses on
+          Udemy. What will you be able to do?
+        </h3>
+        <div>
+          <a class="text-white p-2  rounded-md bg-green-500" href="#">Start teaching today</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div id="footer" class=" ml-7 my-10 mr-7">
+    <div class="flex space-x-16 items-start justify-between">
+      <div class="flex-col text-md text-blue-400 space-y-0.5">
+        <div><a href="">Udemy For business</a></div>
+        <div><a href="">Tech on Udemy</a></div>
+        <div><a href="">Get the app</a></div>
+        <div><a href="">About us</a></div>
+        <div><a href="">Contact us</a></div>
+      </div>
+
+      <div class="flex-col text-md text-blue-400 space-y-0.5">
+        <div><a href="">Careers</a></div>
+        <div><a href="">Blog</a></div>
+        <div><a href="">Help and Support</a></div>
+        <div><a href="">Affiliate</a></div>
+      </div>
+
+      <div class="flex-col text-md text-blue-400 space-y-0.5">
+        <div><a href="">Terms</a></div>
+        <div><a href="">Privacy policy</a></div>
+        <div><a href="">Sitemap</a></div>
+        <div><a href="">Featured courses</a></div>
+      </div>
+
+      <select name="language" class="border border-gray-300 p-2 rounded-lg w-3/12 ">
+        <option value="Thai">Thai</option>
+        <option value="English" selected>English</option>
+        <option value="Japanese">Japaness</option>
+      </select>
+    </div>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center mt-5">
+        <img src="./images/logo.png" class="w-12 mr-1.5">
+        <h2 class="text-2xl font-semibold text-gray-500">Udemy</h2>
+      </div>
+      <h3 class="text-md text-gray-400 font-light mr-8">©2021 Udemy, Inc.</h2>
+    </div>
+  </div>
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+</body>
+
+</html>
