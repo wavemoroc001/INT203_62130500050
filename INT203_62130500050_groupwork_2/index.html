@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="h-screen bg-gray-300">
+      <div class="container flex justify-center py-20">
+        <div class="p-3 bg-white rounded-xl max-w-lg hover:shadow">
+          <div class="flex justify-between w-full"> <img v-bind:src="img"  width="150"
+              class="rounded-lg">
+            <div class="ml-2">
+              <div class="p-3">
+                <h3 class="text-2xl">{{name}}</h3> <span>{{studentid}} </span> <br> <span>{{position}}</span>
+              </div>
+              <div class="flex justify-between items-center p-3 bg-gray-200 rounded-lg">
+                <div class="mr-3"> <span class="text-gray-400 block">Article</span> <span
+                    class="font-bold text-black text-xl" v-if="artNum > 0">{{artNum}}</span> <span class="font-semibold" v-else>null</span> </div>
+                <div class="mr-3"> <span class="text-gray-400 block">Followers</span> <span
+                    class="font-bold text-black text-xl " v-if="followerNum > 10">{{followerNum}}</span> <span class="font-semibold" v-else> a few</span> </div>
+                <div> <span class="text-gray-400 block">Ratings</span> <span
+                    class="font-bold text-black text-xl">{{rating}}</span> </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-between items-center mt-2 gap-2"> <a
+              class="w-full h-12 rounded-md border-2 text-md hover:shadow hover:bg-red-700 hover:border-red-700 hover:text-white p-2.5 text-center"v-bind:href="leave">Leave</a>
+            <a
+              class="w-full h-12 rounded-md bg-blue-700 text-white text-md hover:shadow hover:bg-blue-800 text-center p-2.5" v-bind:href="contact"> Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <i class="material-icons">face</i>
+      <p class="font-semibold text-xl tracking-wider uppercase px-3">{{ msg }}​​</p>
+      <p v-if="shown">From v-if msg</p> -->
+    <!-- <p v-show="shown">From v-show msg</p> not delete from DOM -->
+    <!-- <a v-bind:href="url">Click Me</a> -->
+
+  </div>
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+</body>
+
+
+
+</html>
