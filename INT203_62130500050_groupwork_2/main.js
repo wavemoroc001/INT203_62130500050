@@ -17,7 +17,7 @@ const app = {
         }
     },
     created(){
-        console.log("I was born Hell year" + this.msg);
+        console.log("1st " + this.msg);
     },
     updated() {
         console.log("Has been updated!!")
